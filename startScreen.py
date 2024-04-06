@@ -226,6 +226,7 @@ class StartScreen(simpleGE.Scene):
     #This is going to look for keyboard input(Joystick mapping) and decide what the selection is
     def process(self): 
 
+        #First Row
         if self.x == 1 and self.y == 0:
             self.selectBorder.show()
             self.selectBorder.position = self.warriorsArenaLogo.position
@@ -248,6 +249,7 @@ class StartScreen(simpleGE.Scene):
             self.gameSelected = "Mario-Game"
             self.startClicked = True
         
+        #Second row
         if self.x == 1 and self.y == 1:
             self.selectBorder.position = self.jumpGuyLogo.position
             self.gameSelected = "JumpGuy-Game"
@@ -287,7 +289,7 @@ class StartScreen(simpleGE.Scene):
             self.y = 1
         
 
-        #Exits the games if all of the left buttons are being held at the same time
+        #Exits the games if all of the left buttons are being held at the same time(Inteded to help get out of full screen)
         if self.isKeyPressed(pygame.K_f) and self.isKeyPressed(pygame.K_e) and self.isKeyPressed(pygame.K_z) and self.isKeyPressed(pygame.K_x) and self.isKeyPressed(pygame.K_q):
             self.stop()
             
