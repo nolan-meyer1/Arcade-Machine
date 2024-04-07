@@ -12,7 +12,6 @@ Arcade Font: https://www.dafont.com/arcade-ya.font
 Selection Border: https://pngimg.com/image/90845
 Arcade Music: Music by <a href="https://pixabay.com/users/grand_project-19033897/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=128379">Grand_Project</a> from <a href="https://pixabay.com/music//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=128379">Pixabay</a>
 
-
 Nolan Meyer
 
 March 21, 2023
@@ -115,8 +114,6 @@ class StartScreen(simpleGE.Scene):
         self.startDir = os.getcwd()
         
 
-
-
         #Initializes Arcade Music
         pygame.mixer.music.load("startScreen/arcadeMusic.mp3")
         pygame.mixer.music.set_volume(.3)
@@ -127,10 +124,7 @@ class StartScreen(simpleGE.Scene):
         self.startClicked = False
         self.x = 0
         self.y = 0
-        
-
-
-             
+    
 
         #Adds all the sprites to the sprite list
         self.sprites = [self.ballState_logo,self.titleLabel,self.selectBorder,self.warriorsArenaLogo,self.playLabel,self.cannonShooterLogo,self.charlieLogo,
@@ -220,8 +214,6 @@ class StartScreen(simpleGE.Scene):
                             os.chdir(self.startDir)
                             self.reset()
 
-                
-
 
     #This is going to look for keyboard input(Joystick mapping) and decide what the selection is
     def process(self): 
@@ -271,7 +263,6 @@ class StartScreen(simpleGE.Scene):
             self.startClicked = True
 
     
-
         #Sets x to zero if it goes off of the screen and hides the sprite or if its greater then 3 it sets it back to 3
         if self.x <= 0 and not(self.startClicked):
             self.x = 0
@@ -292,11 +283,7 @@ class StartScreen(simpleGE.Scene):
         #Exits the games if all of the left buttons are being held at the same time(Inteded to help get out of full screen)
         if self.isKeyPressed(pygame.K_f) and self.isKeyPressed(pygame.K_e) and self.isKeyPressed(pygame.K_z) and self.isKeyPressed(pygame.K_x) and self.isKeyPressed(pygame.K_q):
             self.stop()
-            
-
-
-
-
+    
 
 
 
