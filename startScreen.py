@@ -112,7 +112,7 @@ class StartScreen(simpleGE.Scene):
         #Grabs the current working directory that we're in when the game first runs and stors it in a variable so we can
         #always get back to the starting position
         self.startDir = os.getcwd()
-        
+
 
         #Initializes Arcade Music
         pygame.mixer.music.load("startScreen/arcadeMusic.mp3")
@@ -159,6 +159,15 @@ class StartScreen(simpleGE.Scene):
                 
                 if event.key == pygame.K_s:
                     self.y -= 1
+
+                if event.key == pygame.K_SLASH:
+                    os.chdir("startScreen")
+                    subprocess.call(["python3","credits.py"])
+                    os.chdir(self.startDir)
+
+                 
+                 
+                    
                 
                 #Key that plays the game
                 if event.key == pygame.K_f:
@@ -284,7 +293,6 @@ class StartScreen(simpleGE.Scene):
         if self.isKeyPressed(pygame.K_f) and self.isKeyPressed(pygame.K_e) and self.isKeyPressed(pygame.K_z) and self.isKeyPressed(pygame.K_x) and self.isKeyPressed(pygame.K_q):
             self.stop()
     
-
 
 
 #Main function that starts the scene
