@@ -70,7 +70,7 @@ This function looks at the action atrribute of both classes and will then make a
 
 
 
-### Citations
+# Citations
 Ball State Logo: Taken from official twitter page
 
 Arcade Background Image: https://www.vecteezy.com/vector-art/5266448-vector-retro-futuristic-background
