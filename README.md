@@ -52,7 +52,23 @@ This is where all of the user's keyboard input is tracked. This is also where th
 This is where the selection border figures out what icon to go over. It looks at the x and y values and then set's the position of the selection border to the icon the user is intending on selecting. This is also where the boundaries are set. This makes sure that when the user tries to go over the amount of games that are in a row it loops back to the beginning, and when it won't allow the user's y value to go above the amount of rows there are. Lastly, I bulit in a way to exit full screen. If you hold all of the left buttons (Key F, E, Z, X, and Q) it will quit the game allowing you to exit from full screen.
 
 ### Reset Method
-The reset method is very simple. It will reset gameSelected to be nothing, it will hide the selection border and the label telling you to play, it will reset the x and y to zero, and it will restart the background music. 
+The reset method is very simple. It will reset gameSelected to be nothing, it will hide the selection border and the label telling you to play, it will reset the x and y to zero, and it will restart the background music.
+
+## Credits Scene
+
+This is the part of the User Interface that contains all of the credits. It includes the game logo image (same one used on the selection screen), the game name followed by the creator (EX: Warriors Arena- Nolan Meyer). 
+
+### Atrributes
+The attributes of this class are very minimal. It just contains sprites of all the image logos and labels. The first image starts at the position (50,130). The next image will appear below that with the Y value incrimented 90 from the previous image before it. The same idea is done with the labels. Except there will be minor adjustments to make sure that everything lines up nicely. Lastly, there is an action attribute that keeps track of what state we're in. Wether that's page1, page2, or quit. This state information will be returned to our main function. 
+
+### Process Event
+This keeps tracks of all of our keyboard input. If you click the "/" button you will quit. It will stop whatever current scene you're in and set the action attribute to Quit. Depedning on what scene you're in if you click either "A" or "D" it will allow you to switch between scenes. 
+
+### Main
+This function looks at the action atrribute of both classes and will then make a decision based of what state you are in. 
+
+
+
 
 ### Citations
 Ball State Logo: Taken from official twitter page
