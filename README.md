@@ -3,33 +3,38 @@ These are games written by students in the CS120 Computer Science 1 course
 
 # arcade cabinet keyboard map
 
+All input should be based on keyboard.  The cabinet will have a mouse and keyboard,
+but in gameplay mode, only the mapped keys will be available as joysticks and buttons.
+In your instructions, please indicate both a key and a color for buttons, so the 
+game can be played on a traditional computer as well as the cabinet.
+
+    EG:  press f or red button for player1 to fire
+         press h or red button for player2 to fire
+
 **Left stick** 
 
-    w - up
-    a - left
-    s - down
-    d - right
+              w - up
+    a - left     +    d - right
+              s - down
 
 **Left Buttons**  
 
-    f  e  
-          q
-    z  x
+    f (red)  e (white)  
+                        q (blue)
+    z (yellow) x (green)
 
 **Right Stick**  
 
-    i = up
-    j = left
-    k = down
-    l = right
+              i = up
+    j = left    +    l = right
+             k = down
 
 **Right Buttons**  
-(confirmation needed)    
 
-    h  u
-          o
-    b  n
-
+    h (red) u (white)
+                    o (blue)
+    b (yellow) n (green)
+    
 **Left side start button**  
 
     /
@@ -65,7 +70,7 @@ The attributes of this class are very minimal. It just contains sprites of all t
 This keeps tracks of all of our keyboard input. If you click the "/" button you will quit. It will stop whatever current scene you're in and set the action attribute to Quit. Depedning on what scene you're in if you click either "A" or "D" it will allow you to switch between scenes. 
 
 ### Main
-This function looks at the action atrribute of both classes and will then make a decision based of what state you are in. 
+This function looks at the action atrribute of both classes and will then make a decision based of what state you are in. It will check if the page1's action is page2. If it is it will go to page2. Then it will check if either page1 or page2's action is Quit. If it is it will exit the loop and end the execution of the credit scene. I did this so that no matter what part of the credit's your on if you want to exit the credits all you have to do is click the side button. 
 
 
 
@@ -82,7 +87,3 @@ Selection Border: https://pngimg.com/image/90845
 Arcade Music: Music by <a href="https://pixabay.com/users/grand_project-19033897/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=128379">Grand_Project</a> from <a href="https://pixabay.com/music//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=128379">Pixabay</a>
 
 Icon Images: Most icon images were taken from game files and had backgrounds added. 
-
-
-
-    
