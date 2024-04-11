@@ -109,6 +109,14 @@ class StartScreen(simpleGE.Scene):
         self.storeSimLogo.setSize(80,70)
         self.storeSimLogo.position = (521,140)
 
+        #Credits Label
+        self.creditsLabel = simpleGE.Label()
+        self.creditsLabel.text = "Left Side Button: Credits"
+        self.creditsLabel.center = (140,470)
+        self.creditsLabel.clearBack = True
+        self.creditsLabel.size = (300,50)
+        self.creditsLabel.fgColor = (255,215,0)
+
         #Grabs the current working directory that we're in when the game first runs and stors it in a variable so we can
         #always get back to the starting position
         self.startDir = os.getcwd()
@@ -128,7 +136,7 @@ class StartScreen(simpleGE.Scene):
 
         #Adds all the sprites to the sprite list
         self.sprites = [self.ballState_logo,self.titleLabel,self.selectBorder,self.warriorsArenaLogo,self.playLabel,self.cannonShooterLogo,self.charlieLogo,
-                        self.marioLogo,self.jumpGuyLogo,self.diceLogo,self.zombieLandLogo,self.storeSimLogo]
+                        self.marioLogo,self.jumpGuyLogo,self.diceLogo,self.zombieLandLogo,self.storeSimLogo,self.creditsLabel]
 
     
     #Resets everything on the screen
