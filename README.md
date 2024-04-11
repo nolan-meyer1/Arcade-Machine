@@ -65,7 +65,7 @@ The attributes of this class are very minimal. It just contains sprites of all t
 This keeps tracks of all of our keyboard input. If you click the "/" button you will quit. It will stop whatever current scene you're in and set the action attribute to Quit. Depedning on what scene you're in if you click either "A" or "D" it will allow you to switch between scenes. 
 
 ### Main
-This function looks at the action atrribute of both classes and will then make a decision based of what state you are in. 
+This function looks at the action atrribute of both classes and will then make a decision based of what state you are in. It will check if the page1's action is page2. If it is it will go to page2. Then it will check if either page1 or page2's action is Quit. If it is it will exit the loop and end the execution of the credit scene. I did this so that no matter what part of the credit's your on if you want to exit the credits all you have to do is click the side button. 
 
 
 
