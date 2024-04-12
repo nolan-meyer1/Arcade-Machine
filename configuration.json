@@ -1,0 +1,55 @@
+{
+    "Games": [
+        {
+            "Name": "Warriors Arena",
+            "Image-Path": "startScreen/warriors-arena-logo.png",
+            "dir": "Warriors-Arena-Main",
+            "startFile": "userInterface.py"
+        },
+        {
+            "Name": "Cannon Shooter",
+            "Image-Path": "startScreen/cannon-shooter-logo.png",
+            "dir": "Cannon Shooter",
+            "startFile": "CannonDefense.py"
+        },
+        {
+            "Name": "Charlie Game",
+            "Image-Path": "startScreen/charlieLogo.png",
+            "dir": "Charlie-Game",
+            "startFile": "catch8.py"
+        },
+        {
+            "Name": "Janitor Mario",
+            "Image-Path": "startScreen/marioLogo.png",
+            "dir": "Janitoring_Game-main",
+            "startFile": "JanitorGame.complete.py"
+        },
+        {
+            "Name": "Jump Guy",
+            "Image-Path": "startScreen/jumpGuyLogo.png",
+            "dir": "JumpGuy-main",
+            "startFile": "main.py"
+        },
+        {
+            "Name": "Dice Game",
+            "Image-Path": "startScreen/diceLogo.png",
+            "dir": "FinalDice-main",
+            "startFile": "barDice.py"
+        },
+        {
+            "Name": "Zombie Land",
+            "Image-Path": "startScreen/zombieLandLogo.png",
+            "dir": "Zombie-Land-Game-main",
+            "startFile": "zombieLand.py"
+        },
+        {
+            "Name": "Store Simulator",
+            "Image-Path": "startScreen/storeSimulatorLogo.png",
+            "dir": "Store-Simulator-Final-main",
+            "startFile": "carterLeckron_finalProject_storeSimulator.py"
+        }
+        
+    ]
+    
+        
+}
