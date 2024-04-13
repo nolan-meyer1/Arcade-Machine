@@ -121,14 +121,16 @@ class StartScreen(simpleGE.Scene):
 
     
     #Resets everything on the screen
-    def reset(self):
+    def reset(self,num = 0):
         self.gameSelected = ""
         self.selectBorder.hide()
         self.playLabel.hide()
         self.startClicked = False
         self.x = 0
         self.y = 0
-        pygame.mixer.music.play(-1)
+        
+        if num == 0:
+            pygame.mixer.music.play(-1)
 
     
     #Checks for Key Down
@@ -259,7 +261,7 @@ class StartScreen(simpleGE.Scene):
             if (StartScreen.numberPages) > 0 and ((StartScreen.currentPage - 1) > 0):
                 StartScreen.currentPage -= 1
                 self.stop()
-                self.reset()
+                self.reset(1)
                 StartScreen.gamePages[StartScreen.currentPage].start()
                 
             else:
@@ -270,7 +272,7 @@ class StartScreen(simpleGE.Scene):
             if (StartScreen.numberPages) > 0 and ((StartScreen.currentPage + 1) <= StartScreen.numberPages):
                 StartScreen.currentPage += 1
                 self.stop()
-                self.reset()
+                self.reset(1)
                 StartScreen.gamePages[StartScreen.currentPage].start()
                 
                 
