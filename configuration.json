@@ -47,6 +47,18 @@
             "Image-Path": "startScreen/storeSimulatorLogo.png",
             "dir": "Store-Simulator-Final-main",
             "startFile": "carterLeckron_finalProject_storeSimulator.py"
+        },
+        {
+            "Name": "Car",
+            "Image-Path": "Car/car.png",
+            "dir": "Car",
+            "startFile": "physicsCar.py"
+        },
+        {
+            "Name": "Platformer",
+            "Image-Path": "Platformer/charlie.png",
+            "dir": "Platformer",
+            "startFile": "platformer.py"
         }
         
     ]

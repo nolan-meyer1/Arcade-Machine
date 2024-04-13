@@ -20,8 +20,15 @@ March 21, 2023
 #Creates the class that contains the scene
 class StartScreen(simpleGE.Scene):
 
+    currentPage = 1
+    numberPages = 0
+    gamePages = ""
+
     def __init__(self,configurationFile):
         super().__init__()
+
+        #Incriments number of pages
+        StartScreen.numberPages += 1
         
         #Creates the background image and sets the caption of the screen
         self.setCaption("Arcade Machine")
@@ -248,10 +255,27 @@ class StartScreen(simpleGE.Scene):
             self.x = 0
         
         if self.x <= 0 and self.startClicked:
-            self.x = 4
+
+            if (StartScreen.numberPages) > 0 and ((StartScreen.currentPage - 1) > 0):
+                StartScreen.currentPage -= 1
+                self.stop()
+                self.reset()
+                StartScreen.gamePages[StartScreen.currentPage].start()
+                
+            else:
+                self.x = 4
         
         if self.x > self.numberOfGamesX:
-            self.x = 1
+
+            if (StartScreen.numberPages) > 0 and ((StartScreen.currentPage + 1) <= StartScreen.numberPages):
+                StartScreen.currentPage += 1
+                self.stop()
+                self.reset()
+                StartScreen.gamePages[StartScreen.currentPage].start()
+                
+                
+            else: 
+                self.x = 1
 
         if self.y < 0:
             self.y = 0
@@ -260,32 +284,45 @@ class StartScreen(simpleGE.Scene):
             self.y = self.numberOfGamesY
         
 
-        #Exits the games if all of the left buttons are being held at the same time(Inteded to help get out of full screen)
+        #Exits the games if all of the left buttons are being held at the same time(Inteded to help get out of full screen) sets static variable to Quit so it will quit in main
         if self.isKeyPressed(pygame.K_f) and self.isKeyPressed(pygame.K_e) and self.isKeyPressed(pygame.K_z) and self.isKeyPressed(pygame.K_x) and self.isKeyPressed(pygame.K_q):
+            StartScreen.currentPage = "Quit"
             self.stop()
     
     #Runs the game 
     def runGame(self,gameDir,gameFile):
+        """
+        Takes in a directory that we want to change to 
+        and the file that we want to run. 
+        """
+
         os.chdir(gameDir)
         subprocess.call(["python3",gameFile])
         os.chdir(self.startDir)
 
+        #If it is not the credits scene reset
         if gameFile != "credits.py":
             self.reset()
 
 
 #Creates the screen
-def loadPage():
+def loadPage(games,pages=[None]):
+    """
+    Takes in a dictionary loaded in from 
+    a configuration file. Loops over that entire dictionary. 
+    Removes the item after it was created. If there are more than
+    8 on the screen it will make a recursive call passing in what is
+    left. When the list is empty it will stop and return the number of
+    pages back to the main function. 
+    """
 
     i = 0
     j = 0
 
-    with open("configuration.json","r") as file:
-        games = json.load(file)
+    initialLength = len(games["Games"])
     
     page = StartScreen(configurationFile=games)
 
-    
 
     for game in games["Games"]:
 
@@ -313,14 +350,27 @@ def loadPage():
             gameEdited.position = (100 + (j * 140),140)
                 
             i += 1
-            j += 1 
+            j += 1
+
+        #Breaks out of loop at 8 because there only 8 games can be on the screen
+        if i == 8:
+            break
+        
     
     #Checks if there are more than 4 games. If there is add to number of games which adds to the Y boundary for selection border
-    if len(games["Games"]) > 4:
+    if initialLength > 4:
         page.numberOfGamesY += 1
+    
+    #Adds to the pagesList
+    pages.append(page)
+
+    #Resursive Call/Base Case
+    if len(games["Games"]) > 8:
+        games["Games"] = games["Games"][i:]
+        pages = loadPage(games,pages)        
 
     
-    return page
+    return pages
 
         
 
@@ -328,13 +378,16 @@ def loadPage():
 #Main function that starts the scene
 def main():
 
-    #Initializes start screen and keepGoing for while loop
-    #startScreen = StartScreen()
-    #startScreen.start()
+    #Loads the file in that we need
+    with open("configuration.json","r") as file:
+        games = json.load(file)
+    
+    gamePages = loadPage(games)
+    StartScreen.gamePages = gamePages
+    
+    keepGoing = True
 
-    gamePages = loadPage()
-    gamePages.start()
-
+    gamePages[StartScreen.currentPage].start()
 
 if __name__ == "__main__":
     main()
