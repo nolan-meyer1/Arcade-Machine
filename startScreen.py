@@ -24,7 +24,7 @@ class StartScreen(simpleGE.Scene):
     numberPages = 0
     gamePages = ""
 
-    def __init__(self,configurationFile):
+    def __init__(self,games):
         super().__init__()
 
         #Incriments number of pages
@@ -107,8 +107,8 @@ class StartScreen(simpleGE.Scene):
         self.numberOfGamesY = 0
 
         #Contains the configuration file
-        self.configurationFile = configurationFile
-
+        self.configurationFile = games
+       
         #Contains a list of all the games and sets all of the states to be originally blank
         self.gameList = [self.game1,self.game2,self.game3,self.game4,self.game5,self.game6,self.game7,self.game8]
 
@@ -320,9 +320,8 @@ def loadPage(games,pages=[None]):
     j = 0
 
     initialLength = len(games["Games"])
-    
-    page = StartScreen(configurationFile=games)
 
+    page = StartScreen(games)
 
     for game in games["Games"]:
 
@@ -364,11 +363,17 @@ def loadPage(games,pages=[None]):
     #Adds to the pagesList
     pages.append(page)
 
+
     #Resursive Call/Base Case
     if len(games["Games"]) > 8:
-        games["Games"] = games["Games"][i:]
-        pages = loadPage(games,pages)        
 
+        tempGame = games.copy()
+        tempGame["Games"] = tempGame["Games"][i:]
+
+        pages = loadPage(tempGame,pages)
+        
+    
+        
     
     return pages
 
@@ -384,8 +389,6 @@ def main():
     
     gamePages = loadPage(games)
     StartScreen.gamePages = gamePages
-    
-    keepGoing = True
 
     gamePages[StartScreen.currentPage].start()
 
