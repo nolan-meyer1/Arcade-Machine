@@ -1,61 +1,61 @@
 {
     "Games": [
         {
-            "Name": "Warriors Arena",
+            "Name": "Warriors Arena- Nolan Meyer",
             "Image-Path": "startScreen/warriors-arena-logo.png",
             "dir": "Warriors-Arena-Main",
             "startFile": "userInterface.py"
         },
         {
-            "Name": "Cannon Shooter",
+            "Name": "Cannon Shooter- Karter West",
             "Image-Path": "startScreen/cannon-shooter-logo.png",
             "dir": "Cannon Shooter",
             "startFile": "CannonDefense.py"
         },
         {
-            "Name": "Charlie Game",
+            "Name": "Charlie Game- Proffesor Andy Harris",
             "Image-Path": "startScreen/charlieLogo.png",
             "dir": "Charlie-Game",
             "startFile": "catch8.py"
         },
         {
-            "Name": "Janitor Mario",
+            "Name": "Janitor Mario- Lance Schoenradt",
             "Image-Path": "startScreen/marioLogo.png",
             "dir": "Janitoring_Game-main",
             "startFile": "JanitorGame.complete.py"
         },
         {
-            "Name": "Jump Guy",
+            "Name": "Jump Guy- Unknown",
             "Image-Path": "startScreen/jumpGuyLogo.png",
             "dir": "JumpGuy-main",
             "startFile": "main.py"
         },
         {
-            "Name": "Dice Game",
+            "Name": "Dice Game- Brandon Lee",
             "Image-Path": "startScreen/diceLogo.png",
             "dir": "FinalDice-main",
             "startFile": "barDice.py"
         },
         {
-            "Name": "Zombie Land",
+            "Name": "Zombie Land- Unkown",
             "Image-Path": "startScreen/zombieLandLogo.png",
             "dir": "Zombie-Land-Game-main",
             "startFile": "zombieLand.py"
         },
         {
-            "Name": "Store Simulator",
+            "Name": "Store Simulator- Carter Lekron",
             "Image-Path": "startScreen/storeSimulatorLogo.png",
             "dir": "Store-Simulator-Final-main",
             "startFile": "carterLeckron_finalProject_storeSimulator.py"
         },
         {
-            "Name": "Car",
+            "Name": "Car- Proffesor Andy Harris",
             "Image-Path": "Car/car.png",
             "dir": "Car",
             "startFile": "physicsCar.py"
         },
         {
-            "Name": "Platformer",
+            "Name": "Platformer- Proffesor Andy Harris",
             "Image-Path": "Platformer/charlie.png",
             "dir": "Platformer",
             "startFile": "platformer.py"

@@ -152,7 +152,7 @@ class StartScreen(simpleGE.Scene):
                     self.y -= 1
 
                 if event.key == pygame.K_SLASH:
-                    self.runGame("startScreen","credits.py")
+                    self.runGame(None,"credits.py")
 
                  
                 
@@ -298,9 +298,14 @@ class StartScreen(simpleGE.Scene):
         and the file that we want to run. 
         """
 
-        os.chdir(gameDir)
-        subprocess.call(["python3",gameFile])
-        os.chdir(self.startDir)
+        if gameDir != None:
+
+            os.chdir(gameDir)
+            subprocess.call(["python3",gameFile])
+            os.chdir(self.startDir)
+        
+        else:
+            subprocess.call(["python3",gameFile])
 
         #If it is not the credits scene reset
         if gameFile != "credits.py":
@@ -312,10 +317,8 @@ def loadPage(games,pages=[None]):
     """
     Takes in a dictionary loaded in from 
     a configuration file. Loops over that entire dictionary. 
-    Removes the item after it was created. If there are more than
-    8 on the screen it will make a recursive call passing in what is
-    left. When the list is empty it will stop and return the number of
-    pages back to the main function. 
+    If there are more than 8 on the screen it will make a recursive
+    call passing in a sliced list containing the remaning left.
     """
 
     i = 0
