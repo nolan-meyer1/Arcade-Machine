@@ -72,6 +72,10 @@ class Credits(simpleGE.Scene):
     
     #Overrides process method that will look at what page it's on and if you want to exit
     def processEvent(self, event):
+        """
+        Keeps track of key board input. Incriments and decreaes current page
+        based off what page you want to go to. 
+        """
         
         #Checks for key input
         if event.type == pygame.KEYDOWN:
@@ -93,6 +97,11 @@ class Credits(simpleGE.Scene):
     
     #Keeps track of what page we're going to
     def process(self):
+        """
+        This will make the scene transition
+        if the current page does not equal
+        the current page. 
+        """
 
         if Credits.currentPage != self.pageNum:
             self.stop()
@@ -158,7 +167,6 @@ def loadPage(games,pages=[None]):
     return pages
             
     
-
 
 
 

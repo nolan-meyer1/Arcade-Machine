@@ -97,7 +97,6 @@ class StartScreen(simpleGE.Scene):
         pygame.mixer.music.play(-1)
 
         #Keeps track if a current game is selected or not
-        self.gameSelected = ""
         self.startClicked = False
         self.x = 0
         self.y = 0
@@ -122,7 +121,11 @@ class StartScreen(simpleGE.Scene):
     
     #Resets everything on the screen
     def reset(self,num = 0):
-        self.gameSelected = ""
+        """
+        Takes in a number. By default is zero if 
+        not specified. If you put in a number 
+        that means you don't want the music to be reset. 
+        """
         self.selectBorder.hide()
         self.playLabel.hide()
         self.startClicked = False
@@ -135,6 +138,12 @@ class StartScreen(simpleGE.Scene):
     
     #Checks for Key Down
     def processEvent(self, event):
+            """
+            This method keeps track of keyboard input. Based off the keyboard
+            input it will incriment x and y values. Then if the user clicks
+            the "F" key it will look at what x and y values are where and call
+            run game method and run the current game.
+            """
 
             #Checks if the key is down and adds one
             if event.type == pygame.KEYDOWN:
@@ -192,6 +201,13 @@ class StartScreen(simpleGE.Scene):
 
     #This is going to look for keyboard input(Joystick mapping) and decide what the selection is
     def process(self): 
+        """
+        This method looks at the x and y values which are incrimented from
+        key board input in the process event method. Based off those values
+        it will put the selection border into the place that it needs to be. 
+        Also has a built quit if you hold all of the left player buttons (F, E, Q, Z, X).
+        Also deals with state transition between multiple scenes
+        """
 
         #First Row
         if self.x == 1 and self.y == 0:
@@ -295,7 +311,9 @@ class StartScreen(simpleGE.Scene):
     def runGame(self,gameDir,gameFile):
         """
         Takes in a directory that we want to change to 
-        and the file that we want to run. 
+        and the file that we want to run. If you pass 
+        None into the game directory it will not change
+        the directory. 
         """
 
         if gameDir != None:
@@ -376,8 +394,6 @@ def loadPage(games,pages=[None]):
         tempGame["Games"] = tempGame["Games"][i:]
 
         pages = loadPage(tempGame,pages)
-        
-    
         
     
     return pages
