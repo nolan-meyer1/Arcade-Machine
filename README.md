@@ -48,13 +48,79 @@ game can be played on a traditional computer as well as the cabinet.
 
 ### Introduction
 
-The first thing the UI does is it grabs the current directory that the file is being run in. We will need to get back to this directory after we run the other games so I saved this directory into a attribute of the game class called startDir. Then the game keeps track of x and y values. The x and y values are increminted based on which way the left user moves the joystick. If the joystick moves to the right(Key D) then the x value is incrimented by one. If the joystick moves to the left (Key A) then the x is decreased by one. If the joystick moves up (Key W) then the y is incrimented by one. If the joystick moves down (Key S) then the y value is decreased by one. Based on whatever the x and y values are is where the selection border hovers over (see process method). Then once something is selected the user can then play what game they have selected (see process event method). 
+The first thing the UI does is it will run the loadPage function that will create the pages based off the loaded in json file. Once the UI page is instanciated it will grab the current directory wer are in. We will need to get back to this directory after we run the other games so I saved this directory into a attribute of the game class called startDir. Then the game keeps track of x and y values. The x and y values are increminted based on which way the left user moves the joystick. If the joystick moves to the right(Key D) then the x value is incrimented by one. If the joystick moves to the left (Key A) then the x is decreased by one. If the joystick moves up (Key W) then the y is incrimented by one. If the joystick moves down (Key S) then the y value is decreased by one. Based on whatever the x and y values are is where the selection border hovers over (see process method). Then once something is selected the user can then play what game they have selected (see process event method). 
+
+### JSON File
+In order for this program to run you must have a required JSON file called configuration.json. The JSON file is very simple setup. It contains a key called "Games" that contains a list full of dictionaries. The reason it is setup like this is because the program needs to be able to iterate over the list. Whatever game you put at the beginning of the list will be the first one's added on the row. Each dictionary inside of the list will need to have a few elements:
+
+* Name: Should contain game name and author's name. Used in credits page
+* Image-Path: Path to the image you want to be the game icon
+* dir: The directory of the game file that will be run.
+* startFile: The game file that should be run first. 
+
+If you are missing any of these elements and error will be generated and the program will fail execution. 
+The sample structure looks like this: 
+
+{
+    "Games": [
+        {
+            "Name": "Warriors Arena- Nolan Meyer",
+            "Image-Path": "startScreen/warriors-arena-logo.png",
+            "dir": "Warriors-Arena-Main",
+            "startFile": "userInterface.py"
+        },
+        {
+            "Name": "Cannon Shooter- Karter West",
+            "Image-Path": "startScreen/cannon-shooter-logo.png",
+            "dir": "Cannon Shooter",
+            "startFile": "CannonDefense.py"
+        },
+        {
+            "Name": "Charlie Game- Proffesor Andy Harris",
+            "Image-Path": "startScreen/charlieLogo.png",
+            "dir": "Charlie-Game",
+            "startFile": "catch8.py"
+        }
+}
+
+As long as your structure is setup like this you can add however many games you want and the program will generate the needed pages! 
+
+## StartScreen Class
+
+### Overview
+
+This is the class that is used to make pages. It contains a few class variables:
+* currentPage: Keeps track of the current page you're on.
+* numberPages: Keeps track of the number of pages created.
+* gamePages: A list of all of the instances of startScreen created.
+
+Attributes:
+* Background: Background image
+* ballState_logo: Ball State Logo displayed in the corner of the screen.
+* titeLabel: The title that appears at the top of the screen.
+* playLabel: The label that appears once the selection border is on something.
+* game1-8: These are the game icons that will appear on the screen.
+* creditsLabel: The label in the bottom left corner that shows what button to click for creits.
+* startDir: The starting directory that the program is run from.
+* startClicked: Boolean variable to check if a game has been selected.
+* x: x value of the selection border.
+* y: y value of the selection broder.
+* configurationFile: The dictionary loaded in from the configuration file.
+* gameList: The list of all the games on the page. 
+
+### Rest Method
+Resets:
+* selectBorder
+* playLabel
+* x
+* y
+* Music (If specified)
 
 ### Process Event Method
-This is where all of the user's keyboard input is tracked. This is also where the games are ran. There is a class attribtue called gameSelected that is set whenever the user is hovering over a certain game. Once the left user is hovering over something and clicks the red button (Key F) it looks at what game is selcted and runs that game. The prcoess of running the game is always the same. We change the dirctory to the directory that the game is stored in (so we can acess all the game's files) we then call a prcoess and run the game file. After the game is done being run we will reset the directory to the original directory that was talked about in the introduction section. Lastly, we will call the rest method. 
+This is where all of the user's keyboard input is tracked. This is also where the games are ran. There is a class attribtue called gameSelected that is set whenever the user is hovering over a certain game. Once the left user is hovering over something and clicks the red button (Key F) it looks at what game is selcted and runs that game. To run the game it will call the "runGame" method. 
 
 ### Process Method
-This is where the selection border figures out what icon to go over. It looks at the x and y values and then set's the position of the selection border to the icon the user is intending on selecting. This is also where the boundaries are set. This makes sure that when the user tries to go over the amount of games that are in a row it loops back to the beginning, and when it won't allow the user's y value to go above the amount of rows there are. Lastly, I bulit in a way to exit full screen. If you hold all of the left buttons (Key F, E, Z, X, and Q) it will quit the game allowing you to exit from full screen.
+This is where the selection border figures out what icon to go over. It looks at the x and y values and then set's the position of the selection border to the icon the user is intending on selecting. This is also where the boundaries are set. This makes sure that when the user tries to go over the amount of games that are in a row it loops back to the beginnin if there isn't a page behind it or infront of it. If there is another page it will switch to that page. It also won't allow the user's y value to go above the amount of rows there are. Lastly, I bulit in a way to exit full screen. If you hold all of the left buttons (Key F, E, Z, X, and Q) it will quit the game allowing you to exit from full screen.
 
 ### Reset Method
 The reset method is very simple. It will reset gameSelected to be nothing, it will hide the selection border and the label telling you to play, it will reset the x and y to zero, and it will restart the background music.
