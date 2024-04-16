@@ -23,8 +23,7 @@
             "Image-Path": "startScreen/marioLogo.png",
             "dir": "Janitoring_Game-main",
             "startFile": "JanitorGame.complete.py"
-        },
-        {
+        },{
             "Name": "Jump Guy- Unknown",
             "Image-Path": "startScreen/jumpGuyLogo.png",
             "dir": "JumpGuy-main",

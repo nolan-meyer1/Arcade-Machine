@@ -1,5 +1,5 @@
 import pygame,simpleGE
-import subprocess,os,json
+import subprocess,os,json,random
 """
 This file contains the start 
 screen for an Arcade machine located
@@ -162,7 +162,11 @@ class StartScreen(simpleGE.Scene):
 
                 if event.key == pygame.K_SLASH:
                     self.runGame(None,"credits.py")
-
+                
+                #Will select a random game (will only select form current screen)
+                if event.key == pygame.K_1:
+                    self.x = random.randint(1,self.numberOfGamesX)
+                    self.y = random.randint(0,self.numberOfGamesY)
                  
                 
                 #Key that plays the game
