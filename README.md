@@ -117,7 +117,7 @@ Resets:
 * Music (If specified)
 
 ### Process Event Method
-This is where all of the user's keyboard input is tracked. This is also where the games are ran. There is a class attribtue called gameSelected that is set whenever the user is hovering over a certain game. Once the left user is hovering over something and clicks the red button (Key F) it looks at what game is selcted and runs that game. To run the game it will call the "runGame" method. 
+This is where all of the user's keyboard input is tracked. This is also where the games are ran. There is a class attribtue called gameSelected that is set whenever the user is hovering over a certain game. Once the left user is hovering over something and clicks the red button (Key F) it looks at what game is selcted and runs that game. To run the game it will call the "runGame" method. If you click one player button it will select a random game (will only pick from the current screen). You still have to click the red button to play. 
 
 ### Process Method
 This is where the selection border figures out what icon to go over. It looks at the x and y values and then set's the position of the selection border to the icon the user is intending on selecting. This is also where the boundaries are set. This makes sure that when the user tries to go over the amount of games that are in a row it loops back to the beginnin if there isn't a page behind it or infront of it. If there is another page it will switch to that page. It also won't allow the user's y value to go above the amount of rows there are. Lastly, I bulit in a way to exit full screen. If you hold all of the left buttons (Key F, E, Z, X, and Q) it will quit the game allowing you to exit from full screen.
@@ -143,7 +143,7 @@ This function will load in the games file and pass it to loadPage. It will then 
 
 ## Credits Scene
 
-This is the part of the User Interface that contains all of the credits. It includes the game logo image (same one used on the selection screen), the game name followed by the creator (EX: Warriors Arena- Nolan Meyer). 
+This is the part of the User Interface that contains all of the credits. It includes the game logo image (same one used on the selection screen), the game name followed by the creator (EX: Warriors Arena- Nolan Meyer). You start the credits by clicking the left side button. 
 
 ### Atrributes/Class variables
 Attributes:
