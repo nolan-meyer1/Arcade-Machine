@@ -1,4 +1,4 @@
-# showCaseS23 Overview
+# Arcade Machine Ball State Computer Science
 These are games written by students in the CS120 Computer Science 1 course
 
 # arcade cabinet keyboard map
