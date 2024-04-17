@@ -17,8 +17,7 @@
             "Image-Path": "startScreen/charlieLogo.png",
             "dir": "Charlie-Game",
             "startFile": "catch8.py"
-        },
-        {
+        }, {
             "Name": "Janitor Mario- Lance Schoenradt",
             "Image-Path": "startScreen/marioLogo.png",
             "dir": "Janitoring_Game-main",
@@ -59,7 +58,6 @@
             "dir": "Platformer",
             "startFile": "platformer.py"
         }
-        
     ]
     
         

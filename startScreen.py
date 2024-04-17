@@ -80,10 +80,10 @@ class StartScreen(simpleGE.Scene):
         
         #Credits Label
         self.creditsLabel = simpleGE.Label()
-        self.creditsLabel.text = "Left Side Button: Credits"
-        self.creditsLabel.center = (140,470)
+        self.creditsLabel.text = "Left Side Button: Credits, Right P1: Random Game"
+        self.creditsLabel.center = (270,470)
         self.creditsLabel.clearBack = True
-        self.creditsLabel.size = (300,50)
+        self.creditsLabel.size = (500,50)
         self.creditsLabel.fgColor = (255,215,0)
 
         #Grabs the current working directory that we're in when the game first runs and stors it in a variable so we can
@@ -352,7 +352,6 @@ def loadPage(games,pages=[None]):
 
     for game in games["Games"]:
 
-        
         if i < 4:
             gameEdited = page.gameList[i]
 
@@ -408,14 +407,19 @@ def loadPage(games,pages=[None]):
 #Main function that starts the scene
 def main():
 
-    #Loads the file in that we need
-    with open("configuration.json","r") as file:
-        games = json.load(file)
-    
-    gamePages = loadPage(games)
-    StartScreen.gamePages = gamePages
+    try:
 
-    gamePages[StartScreen.currentPage].start()
+        #Loads the file in that we need
+        with open("configuration.json","r") as file:
+            games = json.load(file)
+    
+        gamePages = loadPage(games)
+        StartScreen.gamePages = gamePages
+
+        gamePages[StartScreen.currentPage].start()
+    
+    except FileNotFoundError:
+        print("Error: Can't find 'configuration.json' please make sure the configuration file is in the same directory!")
 
 if __name__ == "__main__":
     main()
