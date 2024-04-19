@@ -147,7 +147,7 @@ class StartScreen(simpleGE.Scene):
 
             #Checks if the key is down and adds one
             if event.type == pygame.KEYDOWN:
-
+    
                 if event.key == pygame.K_d:
                     self.x += 1
 
