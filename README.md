@@ -51,6 +51,7 @@ game can be played on a traditional computer as well as the cabinet.
 The first thing the UI does is it will run the loadPage function that will create the pages based off the loaded in json file. Once the UI page is instanciated it will grab the current directory wer are in. We will need to get back to this directory after we run the other games so I saved this directory into a attribute of the game class called startDir. Then the game keeps track of x and y values. The x and y values are increminted based on which way the left user moves the joystick. If the joystick moves to the right(Key D) then the x value is incrimented by one. If the joystick moves to the left (Key A) then the x is decreased by one. If the joystick moves up (Key W) then the y is incrimented by one. If the joystick moves down (Key S) then the y value is decreased by one. Based on whatever the x and y values are is where the selection border hovers over (see process method). Then once something is selected the user can then play what game they have selected (see process event method). 
 
 <img width="633" alt="Screenshot 2024-04-20 at 11 57 39 AM" src="https://github.com/nolan-meyer1/Arcade-Machine/assets/145584308/c2a5da21-cd94-4d62-b1cb-f86aad5c26ad">
+<img width="633" alt="Screenshot 2024-04-20 at 3 09 03 PM" src="https://github.com/nolan-meyer1/Arcade-Machine/assets/145584308/04e99ef3-750d-45da-91f2-cbbf40b4bc74">
 
 
 ### JSON File
