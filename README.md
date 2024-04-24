@@ -1,7 +1,7 @@
-# Arcade Machine Ball State Computer Science
+# Arcade Machine: Ball State Computer Science
 These are games written by students in the CS120 Computer Science 1 course
 
-# arcade cabinet keyboard map
+# Arcade Machine Keyboard Map
 
 All input should be based on keyboard.  The cabinet will have a mouse and keyboard,
 but in gameplay mode, only the mapped keys will be available as joysticks and buttons.
