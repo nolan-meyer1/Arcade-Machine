@@ -193,4 +193,6 @@ Selection Border: https://pngimg.com/image/90845
 
 Arcade Music: Music by <a href="https://pixabay.com/users/grand_project-19033897/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=128379">Grand_Project</a> from <a href="https://pixabay.com/music//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=128379">Pixabay</a>
 
-Icon Images: Most icon images were taken from game files and had backgrounds added. 
+Race Game Background image: <a href="https://www.freepik.com/free-vector/race-track-with-start-finish-line_24554257.htm#query=cartoon%20racetrack%20background&position=1&from_view=keyword&track=ais&uuid=2140b90c-5055-47e4-8933-215e1c4c4f47">Image by brgfx</a> on Freepik
+
+Icon Images: Most icon images were taken from game files and had backgrounds added. All citations can be found from those in the game author's file 
