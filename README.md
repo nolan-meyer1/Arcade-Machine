@@ -44,6 +44,20 @@ game can be played on a traditional computer as well as the cabinet.
     2 = two players
     1 = one player
 
+# Links 
+This contains all links to all important things in this project!
+| Number | Item | Description |
+|:----: |-------| ----------|
+|UI1|[Start Screen](https://github.com/nolan-meyer1/Arcade-Machine/blob/Experimental/startScreen.py)|The file that controls the UI|
+|UI2|[Credits](https://github.com/nolan-meyer1/Arcade-Machine/blob/Experimental/credits.py)|This file controls the credits page|
+|UI3|[Configuration](https://github.com/nolan-meyer1/Arcade-Machine/blob/Experimental/configuration.json)|Configuration file that is used to load certain games|
+|I1|[Start Screen Images](https://github.com/nolan-meyer1/Arcade-Machine/tree/Experimental/startScreen)|Images files for the Start Screen|
+|GE1|[Game Engine](https://github.com/nolan-meyer1/Arcade-Machine/blob/Experimental/simpleGE.py)|Game Engine used for this project(Some games will contain different versions)|
+
+
+
+G: Game Directories, UI: User Interface files, I: Image Directories, GE: Game Engine
+
 # User Interface
 
 ### Introduction
