@@ -1,6 +1,31 @@
 # Arcade Machine: Ball State Computer Science
 These are games written by students in the CS120 Computer Science 1 course
 
+### Featured Games
+|Game Title| Currently on Machine| Author |
+| -------- | --------------------| ------ |
+|[Cannon Shooter](https://github.com/nolan-meyer1/Arcade-Machine/tree/Experimental/Cannon%20Shooter)|Yes|Karter West|
+|[Car Demo](https://github.com/nolan-meyer1/Arcade-Machine/tree/Experimental/Car)|No|Proffesor Andy Harris|
+|[Charlie Game](https://github.com/nolan-meyer1/Arcade-Machine/tree/Experimental/Charlie-Game)|Yes|Proffesor Andy Harris|
+|[Dice Game](https://github.com/nolan-meyer1/Arcade-Machine/tree/Experimental/FinalDice-main)|No|Braydon Lee|
+|[Mario Janitor](https://github.com/nolan-meyer1/Arcade-Machine/tree/Experimental/Janitoring_Game-main)|No|Lance Schoenradt|
+|[Mystic Monsters](https://github.com/nolan-meyer1/Arcade-Machine/tree/Experimental/Mystic_Monsters-main)|No|Jeremy Escobar|
+|[Organ Simon](https://github.com/nolan-meyer1/Arcade-Machine/tree/Experimental/OrganSimon)|No|Alexander Murry|
+|[Platformer](https://github.com/nolan-meyer1/Arcade-Machine/tree/Experimental/Platformer)|Yes|Proffesor Andy Harris|
+|[Store Simulator](https://github.com/nolan-meyer1/Arcade-Machine/tree/Experimental/Store-Simulator-Final-main)|No|Cater Lekron|
+|[Warriors Arena](https://github.com/nolan-meyer1/Arcade-Machine/tree/Experimental/Warriors-Arena-main)|Yes|Nolan Meyer|
+|[Zombie Shooter](https://github.com/nolan-meyer1/Arcade-Machine/tree/Experimental/ZombShooter-main)|No|Andrew Scott|
+|[Zombie Land](https://github.com/nolan-meyer1/Arcade-Machine/tree/Experimental/Zombie-Land-Game-main)|No|Unkown|
+|[Jump Guy](https://github.com/nolan-meyer1/Arcade-Machine/tree/Experimental/jumpGuy-main)|No|Unknown|
+
+
+
+
+
+
+
+
+
 # Arcade Machine Keyboard Map
 
 All input should be based on keyboard.  The cabinet will have a mouse and keyboard,
