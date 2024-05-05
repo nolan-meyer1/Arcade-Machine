@@ -13,11 +13,36 @@
             "startFile": "CannonDefense.py"
         },
         {
+            "Name": "Tank Game- Owen Johnson",
+            "Image-Path": "startScreen/tankGame.png",
+            "dir": "Tank-Game-main",
+            "startFile": "tank.py"
+        },
+        {
+            "Name": "SpaceShip Game- Addison Isley",
+            "Image-Path": "startScreen/spaceShipGame.png",
+            "dir": "Final-Project-main",
+            "startFile": "addison.isley_Final_Game.py"
+        }, 
+        {
+            "Name": "Racing Game- Isaiah Schlenker",
+            "Image-Path": "startScreen/raceCar.png",
+            "dir": "Final-Game-main",
+            "startFile": "Drift-Racing.py"
+        },
+        {
+            "Name": "Celestial Voyage- Christopher Davis",
+            "Image-Path": "startScreen/celestialVoyage.png",
+            "dir": "CelestialVoyage",
+            "startFile": "CelestialVoyage.py"
+        },  
+        {
             "Name": "Charlie Game- Proffesor Andy Harris",
             "Image-Path": "startScreen/charlieLogo.png",
             "dir": "Charlie-Game",
             "startFile": "catch8.py"
-        }, {
+        }, 
+        {
             "Name": "Janitor Mario- Lance Schoenradt",
             "Image-Path": "startScreen/marioLogo.png",
             "dir": "Janitoring_Game-main",
@@ -58,6 +83,7 @@
             "dir": "Platformer",
             "startFile": "platformer.py"
         }
+
     ]
     
         

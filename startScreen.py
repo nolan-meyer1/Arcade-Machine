@@ -401,8 +401,7 @@ def loadPage(games,pages=[None]):
     
     return pages
 
-        
-
+    
 
 #Main function that starts the scene
 def main():
@@ -419,7 +418,7 @@ def main():
         gamePages[StartScreen.currentPage].start()
     
     except FileNotFoundError:
-        print("Error: Can't find 'configuration.json' please make sure the configuration file is in the same directory!")
+        print("Error: Can't find 'configuration.json' please make sure the configuration file is in the same directory! Or make sure that \n you're in the right directory.")
 
 if __name__ == "__main__":
     main()
