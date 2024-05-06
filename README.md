@@ -8,7 +8,7 @@ These are games written by students in the CS120 Computer Science 1 course
 |[Car Demo](https://github.com/nolan-meyer1/Arcade-Machine/tree/Experimental/Car)|No|Proffesor Andy Harris|
 |[Celestial Voyage](https://github.com/nolan-meyer1/Arcade-Machine/tree/Experimental/CelestialVoyage)|Yes|Christopher Davis|
 |[Charlie Game](https://github.com/nolan-meyer1/Arcade-Machine/tree/Experimental/Charlie-Game)|Yes|Proffesor Andy Harris|
-|[Space Game](https://github.com/nolan-meyer1/Arcade-Machine/tree/Experimental/Final-Project-main)|No|Addison Isley|
+|[Space Game](https://github.com/nolan-meyer1/Arcade-Machine/tree/Experimental/Final-Project-main)|Yes|Addison Isley|
 |[Driving Game](https://github.com/nolan-meyer1/Arcade-Machine/tree/Experimental/Final-Game-main)|Yes|Isaiah Schlenker|
 |[Dice Game](https://github.com/nolan-meyer1/Arcade-Machine/tree/Experimental/FinalDice-main)|No|Braydon Lee|
 |[Mario Janitor](https://github.com/nolan-meyer1/Arcade-Machine/tree/Experimental/Janitoring_Game-main)|No|Lance Schoenradt|
