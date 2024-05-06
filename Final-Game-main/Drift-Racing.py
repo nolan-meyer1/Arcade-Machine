@@ -81,8 +81,12 @@ class Game(simpleGE.Scene):
         self.lblLapCount = lblLapCount(self)
         self.lblTimer = lblTimer(self)
         self.lblInstructions = lblInstructions(self)
+        self.quitLabel = lblInstructions(self)
+        self.quitLabel.text = "Green: Quit"
+        self.quitLabel.size = (120,30)
+        self.quitLabel.center = (500, 730)
         self.time = 0
-        self.sprites = [self.checkpoint, self.checkpoint2, self.checkpoint3, self.checkpoint4, self.car, self.obstacles, self.lblLapCount, self.lblTimer, self.lblInstructions]
+        self.sprites = [self.checkpoint, self.checkpoint2, self.checkpoint3, self.checkpoint4, self.car, self.obstacles, self.lblLapCount, self.lblTimer, self.lblInstructions,self.quitLabel]
     def process(self):
         self.lblLapCount.text = f"Lap: {self.car.lap}"
         self.lblTimer.text = f"Time: {self.time:.1f}"
@@ -107,6 +111,9 @@ class Game(simpleGE.Scene):
             self.regTime = False
             self.lapTime = False
             self.time = 0
+        
+        if self.isKeyPressed(pygame.K_x):
+            self.stop()
         
 class Obstacles(simpleGE.Sprite):
     def __init__(self, scene):

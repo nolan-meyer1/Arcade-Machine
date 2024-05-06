@@ -19,12 +19,6 @@
             "startFile": "tank.py"
         },
         {
-            "Name": "SpaceShip Game- Addison Isley",
-            "Image-Path": "startScreen/spaceShipGame.png",
-            "dir": "Final-Project-main",
-            "startFile": "addison.isley_Final_Game.py"
-        }, 
-        {
             "Name": "Racing Game- Isaiah Schlenker",
             "Image-Path": "startScreen/raceCar.png",
             "dir": "Final-Game-main",
@@ -43,45 +37,16 @@
             "startFile": "catch8.py"
         }, 
         {
-            "Name": "Janitor Mario- Lance Schoenradt",
-            "Image-Path": "startScreen/marioLogo.png",
-            "dir": "Janitoring_Game-main",
-            "startFile": "JanitorGame.complete.py"
-        },{
-            "Name": "Jump Guy- Unknown",
-            "Image-Path": "startScreen/jumpGuyLogo.png",
-            "dir": "JumpGuy-main",
-            "startFile": "main.py"
-        },
-        {
-            "Name": "Dice Game- Brandon Lee",
-            "Image-Path": "startScreen/diceLogo.png",
-            "dir": "FinalDice-main",
-            "startFile": "barDice.py"
-        },
-        {
-            "Name": "Zombie Land- Unkown",
-            "Image-Path": "startScreen/zombieLandLogo.png",
-            "dir": "Zombie-Land-Game-main",
-            "startFile": "zombieLand.py"
-        },
-        {
-            "Name": "Store Simulator- Carter Lekron",
-            "Image-Path": "startScreen/storeSimulatorLogo.png",
-            "dir": "Store-Simulator-Final-main",
-            "startFile": "carterLeckron_finalProject_storeSimulator.py"
-        },
-        {
-            "Name": "Car- Proffesor Andy Harris",
-            "Image-Path": "Car/car.png",
-            "dir": "Car",
-            "startFile": "physicsCar.py"
-        },
-        {
             "Name": "Platformer- Proffesor Andy Harris",
             "Image-Path": "Platformer/charlie.png",
             "dir": "Platformer",
             "startFile": "platformer.py"
+        },
+        {
+            "Name": "SpaceShip Game- Addison Isley",
+            "Image-Path": "startScreen/spaceShipGame.png",
+            "dir": "Final-Project-main",
+            "startFile": "addison.isley_Final_Game.py"
         }
 
     ]

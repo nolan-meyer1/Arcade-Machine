@@ -1,24 +1,19 @@
 import pygame, simpleGE, random
-from PIL import Image
 
 class Spaceship(simpleGE.Sprite):
     def __init__(self, scene):
         super().__init__(scene)
         self.setImage("Spaceship_rotated.png")
         self.setSize(30, 30)
-        image_obj = Image.open("Spaceship.png")
-        rotated_image = image_obj.rotate(270)
-        rotated_image.save("Spaceship_rotated.png")
-        rotated_image
         
     def process(self):
-        if self.isKeyPressed(pygame.K_LEFT):
+        if self.isKeyPressed(pygame.K_a):
             self.imageAngle += 6
-        if self.isKeyPressed(pygame.K_RIGHT):
+        if self.isKeyPressed(pygame.K_d):
             self.imageAngle -= 6
-        if self.isKeyPressed(pygame.K_UP):
+        if self.isKeyPressed(pygame.K_w):
             self.addForce(.2, self.imageAngle)
-        if self.isKeyPressed(pygame.K_DOWN):
+        if self.isKeyPressed(pygame.K_s):
             self.addForce(-.2, self.imageAngle)
 
 class Asteroid(simpleGE.Sprite):
@@ -119,7 +114,7 @@ class Game(simpleGE.Scene):
         
     def processEvent(self, event):
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_SPACE:
+            if event.key == pygame.K_f:
                 self.bullet.fire()
         
     def process(self):
@@ -161,11 +156,11 @@ class Instructions(simpleGE.Scene):
         self.directions.size = (700, 300)
         
         self.btnPlay = simpleGE.Button()
-        self.btnPlay.text = "Play"
+        self.btnPlay.text = "Play (Up)"
         self.btnPlay.center = (100, 425)
         
         self.btnQuit = simpleGE.Button()
-        self.btnQuit.text = "Quit"
+        self.btnQuit.text = "Quit (Down)"
         self.btnQuit.center = (535, 425)
         
         self.lblScore = simpleGE.Label()
@@ -187,6 +182,19 @@ class Instructions(simpleGE.Scene):
         if self.btnQuit.clicked:
             self.response = "Quit"
             self.stop()
+    
+    def processEvent(self, event):
+        
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_w:
+                self.response = "Play"
+                self.stop()
+            
+            if event.key == pygame.K_s:
+                self.response = "Quit"
+                self.stop()
+
+
             
 def main():
     

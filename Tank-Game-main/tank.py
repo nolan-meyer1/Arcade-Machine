@@ -326,19 +326,19 @@ class Instruction(simpleGE.Scene):
         self.setImage("rockBG.png")
         self.directions = simpleGE.MultiLabel()
         self.directions.textLines = [
-        "Player 1: WASD (move) F (shoot)",
-        "Player 2: IJKL (move) H (shoot)",
+        "Player 1: WASD (Joystick) F (red)",
+        "Player 2: IJKL (Joystick) H (red)",
         "First to 3 wins the round!",]
         
         self.directions.center = (320, 240)
         self.directions.size = (500, 250)
         
         self.btnPlay = simpleGE.Button()
-        self.btnPlay.text = "Play (w)"
+        self.btnPlay.text = "Play (Up)"
         self.btnPlay.center = (100, 400)
         
         self.btnQuit = simpleGE.Button()
-        self.btnQuit.text = "Quit (q)"
+        self.btnQuit.text = "Quit (Blue)"
         self.btnQuit.center = (540, 400)
         
 
@@ -373,11 +373,11 @@ class Win1(simpleGE.Scene):
         self.winner.size = (250, 150)
         
         self.btnPlay = simpleGE.Button()
-        self.btnPlay.text = "Play (w)"
+        self.btnPlay.text = "Play (Up)"
         self.btnPlay.center = (100, 400)
         
         self.btnQuit = simpleGE.Button()
-        self.btnQuit.text = "Quit (q)"
+        self.btnQuit.text = "Quit (Blue)"
         self.btnQuit.center = (540, 400)
         
         self.sprites = [self.winner,
