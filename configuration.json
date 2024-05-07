@@ -1,0 +1,55 @@
+{
+    "Games": [
+        {
+            "Name": "Warriors Arena- Nolan Meyer",
+            "Image-Path": "startScreen/warriors-arena-logo.png",
+            "dir": "Warriors-Arena-Main",
+            "startFile": "userInterface.py"
+        },
+        {
+            "Name": "Cannon Shooter- Karter West",
+            "Image-Path": "startScreen/cannon-shooter-logo.png",
+            "dir": "Cannon Shooter",
+            "startFile": "CannonDefense.py"
+        },
+        {
+            "Name": "Tank Game- Owen Johnson",
+            "Image-Path": "startScreen/tankGame.png",
+            "dir": "Tank-Game-main",
+            "startFile": "tank.py"
+        },
+        {
+            "Name": "Racing Game- Isaiah Schlenker",
+            "Image-Path": "startScreen/raceCar.png",
+            "dir": "Final-Game-main",
+            "startFile": "Drift-Racing.py"
+        },
+        {
+            "Name": "Celestial Voyage- Christopher Davis",
+            "Image-Path": "startScreen/celestialVoyage.png",
+            "dir": "CelestialVoyage",
+            "startFile": "CelestialVoyage.py"
+        },  
+        {
+            "Name": "Charlie Game- Proffesor Andy Harris",
+            "Image-Path": "startScreen/charlieLogo.png",
+            "dir": "Charlie-Game",
+            "startFile": "catch8.py"
+        }, 
+        {
+            "Name": "Platformer- Proffesor Andy Harris",
+            "Image-Path": "Platformer/charlie.png",
+            "dir": "Platformer",
+            "startFile": "platformer.py"
+        },
+        {
+            "Name": "SpaceShip Game- Addison Isley",
+            "Image-Path": "startScreen/spaceShipGame.png",
+            "dir": "Final-Project-main",
+            "startFile": "addison.isley_Final_Game.py"
+        }
+
+    ]
+    
+        
+}
