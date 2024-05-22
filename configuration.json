@@ -47,6 +47,12 @@
             "Image-Path": "startScreen/spaceShipGame.png",
             "dir": "Final-Project-main",
             "startFile": "addison.isley_Final_Game.py"
+        },
+        {
+            "Name": "Asteroid Game- Nolan Meyer",
+            "Image-Path": "startScreen/spaceGameLogo.png",
+            "dir": "AsteroidGame",
+            "startFile": "nolan.meyer_gameEngine2_blackbelt.py"
         }
 
     ]
