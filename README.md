@@ -21,6 +21,7 @@ These are games written by students in the CS120 Computer Science 1 course
 |[Zombie Shooter](https://github.com/nolan-meyer1/Arcade-Machine/tree/Experimental/ZombShooter-main)|No|Andrew Scott|
 |[Zombie Land](https://github.com/nolan-meyer1/Arcade-Machine/tree/Experimental/Zombie-Land-Game-main)|No|Unkown|
 |[Jump Guy](https://github.com/nolan-meyer1/Arcade-Machine/tree/Experimental/jumpGuy-main)|No|Unknown|
+|[Asteroid Game](https://github.com/nolan-meyer1/Arcade-Machine/tree/main/AsteroidGame)|Yes|Nolan Meyer|
 
 
 
