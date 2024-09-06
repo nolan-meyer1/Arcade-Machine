@@ -139,7 +139,10 @@ Attributes:
 * x: x value of the selection border.
 * y: y value of the selection broder.
 * configurationFile: The dictionary loaded in from the configuration file.
-* gameList: The list of all the games on the page. 
+* gameList: The list of all the games on the page.
+
+### Resize Method
+This function is used specifcally to scale everything into full screen mode. The defualt simpleGE window is a (640,480). In order to resize I take whatever the full screen dimensions are for that specific screen and divide it by the (640,480) which is the defualt window size that most of the games were built on. In order for this function to work correctly you also have to change their simpleGE file to automatically start the scene in full screen mode. There are many different versions of this function throughout the games on this machine. Each one is a written a little bit different in order to meet the unique scaling requirements for each game. 
 
 ### Rest Method
 Resets:
