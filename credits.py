@@ -49,8 +49,6 @@ class Credits(simpleGE.Scene):
         self.gameLabel2 = simpleGE.Label()
         self.gameLabel3 = simpleGE.Label()
         self.gameLabel4 = simpleGE.Label()
-    
-
 
         #Keeps track of what page we're on and keeps track if you want to quit
         self.pageNumber = 0
@@ -68,6 +66,35 @@ class Credits(simpleGE.Scene):
             label.hide()
 
         self.sprites = [self.titleLabel,self.logoList,self.labelList]
+
+        pygame.display.toggle_fullscreen()
+    
+    def resize(self):
+        """
+        Defualt window size is 640 by 480. This function 
+        makes a ratio based off that size and updates 
+        everything on the screen to be rezised with whatever
+        the current size of the full screen is. 
+        """
+
+        windowSize = pygame.display.get_window_size()
+
+        #X and Y ratios used for scaling
+        ratioX = windowSize[0] / 640
+        ratioY = windowSize[1] / 480
+
+
+        #Updates all the game image sizes and position
+        for game in self.logoList:
+            game.setSize(ratioX * 80,ratioY * 70)
+            game.position = (ratioX * game.x,ratioY * game.y)
+        
+        #Updates all of the labels position
+        for label in self.labelList:
+            label.center = (ratioX * label.center[0],ratioY * label.center[1])
+        
+        #Replaces the label images
+        self.titleLabel.center = (ratioX * 320,230)
         
     
     #Overrides process method that will look at what page it's on and if you want to exit
@@ -151,7 +178,8 @@ def loadPage(games,pages=[None]):
             break
         
     
-    #Adds to the pagesList
+    #Adds to the pagesList and resizes
+    page.resize()
     pages.append(page)
 
 

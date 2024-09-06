@@ -14,7 +14,7 @@ class Coin(simpleGE.Sprite):
     def reset(self):
         self.y = 10
         self.x = random.randint(0, self.screenWidth)
-        self.dy = random.randint(3, 8)
+        self.dy = random.randint((pygame.display.get_window_size()[1] // 480) * 3, (pygame.display.get_window_size()[1] // 480) * 8)
         
     def checkBounds(self):
         if self.bottom > self.screenHeight:
@@ -26,7 +26,7 @@ class Charlie(simpleGE.Sprite):
         self.setImage("Charlie.png")
         self.setSize(50, 50)
         self.position = (320, 400)
-        self.moveSpeed = 5
+        self.moveSpeed = pygame.display.get_window_size()[0] // 640 * 5
     
     def process(self):
         if self.isKeyPressed(pygame.K_a):
@@ -69,6 +69,31 @@ class Game(simpleGE.Scene):
                         self.coins,
                         self.lblScore, 
                         self.lblTime]
+    def resize(self):
+        """
+        Defualt window size is 640 by 480. This function 
+        makes a ratio based off that size and updates 
+        everything on the screen to be rezised with whatever
+        the current size of the full screen is. 
+        """
+
+        windowSize = pygame.display.get_window_size()
+
+        #Used for scailing
+        ratioX = windowSize[0] / 640
+        ratioY = windowSize[1] / 480
+
+        #Updates charlie
+        self.charlie.setSize(ratioX * 50,ratioY * 50)
+        self.charlie.position = (ratioX * self.charlie.x,ratioY * self.charlie.y)
+
+        #Updates coin size
+        for coin in self.coins:
+            coin.setSize(ratioX * 25,ratioY * 25)
+        
+        #Updates the labels positions
+        self.lblScore.center = (ratioX * 100,ratioY * 30)
+        self.lblTime.center = (ratioX * 500,ratioY * 30)
         
     def process(self):
         for coin in self.coins:
@@ -119,6 +144,27 @@ class Instructions(simpleGE.Scene):
                         self.lblScore,
                         self.btnQuit,
                         self.btnPlay]
+    
+    def resize(self):
+        """
+        Resizes elements to scale up to full screen
+        """
+
+        windowSize = pygame.display.get_window_size()
+
+        #Used for scailing
+        ratioX = windowSize[0] / 640
+        ratioY = windowSize[1] / 480
+
+        #Updates main instructions label
+        self.instructions.center = (ratioX * 320,ratioY * 240)
+
+        #Updates the buttons
+        self.btnPlay.center = (ratioX * 100,ratioY * 400)
+        self.btnQuit.center = (ratioX * 550,ratioY * 400)
+
+        #Last score label
+        self.lblScore.center = (ratioX * 320,ratioY * 400)
         
     def process(self):
         #buttons
@@ -144,10 +190,12 @@ def main():
     while keepGoing:
         
         instructions = Instructions(score)
+        instructions.resize()
         instructions.start()
                 
         if instructions.response == "Play":    
             game = Game()
+            game.resize()
             game.start()
             score = game.score
         else:

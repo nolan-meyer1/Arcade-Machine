@@ -164,6 +164,12 @@ class Game(simpleGE.Scene):
         self.tank2.setSize(40, 40)
         self.bullet2 = Bullet2(self, self.tank2)
         self.bullet2.speed = -20
+
+        self.windowSize = pygame.display.get_window_size()
+
+        #Used for scailing
+        self.ratioX = self.windowSize[0] // 640
+        self.ratioY = self.windowSize[1] // 480
         
         self.barriersL = []
         self.barriersR = []
@@ -272,14 +278,14 @@ class Game(simpleGE.Scene):
             self.tank1.lblScore.text = f"Score (p1): {self.tank1.score}"
             if self.tank1.x < 325:
 
-                self.tank2.x = random.randint(400, 640)
-                self.tank2.y = random.randint(0, 640)
+                self.tank2.x = random.randint(self.ratioX * 400, self.ratioX * 640)
+                self.tank2.y = random.randint(0, self.ratioY * 640)
                 self.tank2.hide()
                 self.tank2.show()
             elif self.tank1.x > 325:
 
-                self.tank2.x = random.randint(0, 250)
-                self.tank2.y = random.randint(0, 640)
+                self.tank2.x = random.randint(0, self.ratioX * 250)
+                self.tank2.y = random.randint(0, self.ratioY * 640)
                 self.tank2.hide()
                 self.tank2.show()
             
@@ -293,24 +299,71 @@ class Game(simpleGE.Scene):
             self.sndHit.play()
             self.tank2.lblScore.text = f"Score (p2): {self.tank2.score}"
             if self.tank2.x < 320:
-                self.tank1.x = random.randint(400, 640)
-                self.tank1.y = random.randint(0, 640)
+                self.tank1.x = random.randint(self.ratioX * 400, self.ratioX * 640)
+                self.tank1.y = random.randint(0, self.ratioY * 640)
                 self.tank1.hide()
                 self.tank1.show()
             elif self.tank2.x > 320:
-                self.tank1.x = random.randint(0, 250)
-                self.tank1.y = random.randint(0, 640)
+                self.tank1.x = random.randint(0, self.ratioX * 250)
+                self.tank1.y = random.randint(0, self.ratioY * 640)
                 self.tank1.hide()
                 self.tank1.show()
             
         if self.tank1.score == 3:
             winner1 = Win1()
+            winner1.resize()
             winner1.start()
             self.stop()
         if self.tank2.score == 3:
             winner2 = Win2()
+            winner2.resize()
             winner2.start()
             self.stop()
+            
+    def resize(self):
+        """Rezises everything to meet the size of
+        the new screen
+        """
+
+        windowSize = pygame.display.get_window_size()
+
+        #Used for scailing
+        ratioX = windowSize[0] / 640
+        ratioY = windowSize[1] / 480
+
+
+        #Updates all the barrier sizes
+        for barrier in self.barriersB:
+            barrier.colorRect("yellow", (ratioX * 10, ratioY * 10))
+            barrier.position = (ratioX * barrier.x,ratioY * barrier.y) 
+        
+        for barrier in self.barriersL:
+            barrier.colorRect("yellow", (ratioX * 10, ratioY * 10))
+            barrier.position = (ratioX * barrier.x,ratioY * barrier.y) 
+        
+        for barrier in self.barriersR:
+            barrier.colorRect("yellow", (ratioX * 10, ratioY * 10))
+            barrier.position = (ratioX * barrier.x,ratioY * barrier.y) 
+        
+        for barrier in self.barriersT:
+            barrier.colorRect("yellow", (ratioX * 10, ratioY * 10))
+            barrier.position = (ratioX * barrier.x,ratioY * barrier.y)
+
+        #Updates tank 1 and bullet 1
+        self.tank1.setSize(ratioX * 40,ratioY * 40)
+        self.bullet1.setSize(ratioX * 5,ratioY * 5)
+
+        #Updates tank 2 and bullet 2
+        self.tank2.setSize(ratioX * 40,ratioY * 40)
+        self.bullet2.setSize(ratioX * 5,ratioY * 5)
+        self.tank2.position = (ratioX * 565,ratioY * 250)
+
+        #Updates the score label positions
+        self.tank1.lblScore.center = (ratioX * 100,ratioY * 30)
+        self.tank2.lblScore.center = (ratioX * 540,ratioY * 30)
+
+
+        
 
 class Barrier(simpleGE.Sprite):
     def __init__(self, scene):
@@ -360,6 +413,24 @@ class Instruction(simpleGE.Scene):
         if self.btnQuit.clicked or self.isKeyPressed(pygame.K_q):
             self.response = "Quit"
             self.stop()
+    
+    def resize(self):
+        """
+        Resizes/repositions all the labels and buttons.
+        """
+
+        windowSize = pygame.display.get_window_size()
+
+        #Used for scailing
+        ratioX = windowSize[0] / 640
+        ratioY = windowSize[1] / 480
+
+        #Updates directions label
+        self.directions.center = (ratioX * 320,ratioY * 240)
+
+        #Updates buttons
+        self.btnPlay.center = (ratioX * 100,ratioY * 400)
+        self.btnQuit.center = (ratioX * 540,ratioY * 400)
 
 class Win1(simpleGE.Scene):
     def __init__(self):
@@ -377,7 +448,7 @@ class Win1(simpleGE.Scene):
         self.btnPlay.center = (100, 400)
         
         self.btnQuit = simpleGE.Button()
-        self.btnQuit.text = "Quit (Blue)"
+        self.btnQuit.text = "Quit (Down)"
         self.btnQuit.center = (540, 400)
         
         self.sprites = [self.winner,
@@ -387,12 +458,33 @@ class Win1(simpleGE.Scene):
     def process(self):
         if self.isKeyPressed(pygame.K_w) or self.btnPlay.clicked:
             game = Game()
+            game.resize()
             game.start()
             self.stop()
             
-        if self.btnQuit.clicked or self.isKeyPressed(pygame.K_q):
+        if self.btnQuit.clicked or self.isKeyPressed(pygame.K_s):
             self.response = "Quit"
             self.stop()
+    
+    def resize(self):
+        """
+        Resizes/repositions all the labels and buttons.
+        """
+
+        windowSize = pygame.display.get_window_size()
+
+        #Used for scailing
+        ratioX = windowSize[0] / 640
+        ratioY = windowSize[1] / 480
+
+        #Updates directions label
+        self.winner.center = (ratioX * 320,ratioY * 240)
+
+        #Updates buttons
+        self.btnPlay.center = (ratioX * 100,ratioY * 400)
+        self.btnQuit.center = (ratioX * 540,ratioY * 400)
+    
+    
 
 class Win2(simpleGE.Scene):
     def __init__(self):
@@ -406,11 +498,11 @@ class Win2(simpleGE.Scene):
         self.winner.size = (250, 150)
         
         self.btnPlay = simpleGE.Button()
-        self.btnPlay.text = "Play (i)"
+        self.btnPlay.text = "Play (Up)"
         self.btnPlay.center = (100, 400)
         
         self.btnQuit = simpleGE.Button()
-        self.btnQuit.text = "Quit (o)"
+        self.btnQuit.text = "Quit (Down)"
         self.btnQuit.center = (540, 400)
         
         self.sprites = [self.winner,
@@ -420,12 +512,31 @@ class Win2(simpleGE.Scene):
     def process(self):
         if self.isKeyPressed(pygame.K_i) or self.btnPlay.clicked:
             game = Game()
+            game.resize()
             game.start()
             self.stop()
             
-        if self.btnQuit.clicked or self.isKeyPressed(pygame.K_o):
+        if self.btnQuit.clicked or self.isKeyPressed(pygame.K_k):
             self.response = "Quit"
             self.stop()
+    
+    def resize(self):
+        """
+        Resizes/repositions all the labels and buttons.
+        """
+
+        windowSize = pygame.display.get_window_size()
+
+        #Used for scailing
+        ratioX = windowSize[0] / 640
+        ratioY = windowSize[1] / 480
+
+        #Updates directions label
+        self.winner.center = (ratioX * 320,ratioY * 240)
+
+        #Updates buttons
+        self.btnPlay.center = (ratioX * 100,ratioY * 400)
+        self.btnQuit.center = (ratioX * 540,ratioY * 400)
             
 def main():
     keepGoing = True
@@ -433,10 +544,11 @@ def main():
     while keepGoing:
         
         instructions = Instruction()
-        
+        instructions.resize()
         instructions.start()
         if instructions.response == "Play":
             game = Game()
+            game.resize()
             game.start()
 
         else:

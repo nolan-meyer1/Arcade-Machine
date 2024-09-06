@@ -1,5 +1,5 @@
 import pygame,simpleGE
-import subprocess,os,json,random
+import subprocess,os,json,random,time
 """
 This file contains the start 
 screen for an Arcade machine located
@@ -113,12 +113,57 @@ class StartScreen(simpleGE.Scene):
 
         for game in self.gameList:
             game.hide()
-    
 
         #Adds all the sprites to the sprite list
         self.sprites = [self.ballState_logo,self.titleLabel,self.selectBorder,self.gameList,self.playLabel,self.creditsLabel]
 
+        #Once it goes into full screen mode we toggle it back into window mode. This makes it where it will be full screen but in
+        #window mode and will allow us to run sub proccess on top of it and it won't affect the menu screen. 
+        pygame.display.toggle_fullscreen()
+
     
+
+    def resize(self):
+        """
+        Defualt window size is 640 by 480. This function 
+        makes a ratio based off that size and updates 
+        everything on the screen to be rezised with whatever
+        the current size of the full screen is. 
+        """
+
+        windowSize = pygame.display.get_window_size()
+
+        #Used for scailing
+        ratioX = windowSize[0] / 640
+        ratioY = windowSize[1] / 480
+
+
+        #Updates title label
+        self.titleLabel.center = (ratioX * 320, 230)
+
+        #Rezises all the game images
+        for game in self.gameList:
+            game.position = (ratioX * game.x,ratioY * game.y)
+            game.setSize(ratioX * 80,ratioY * 70)
+
+        
+        #Updates the Ball State Logo
+        self.ballState_logo.position = (ratioX * self.ballState_logo.x,(ratioY * self.ballState_logo.y)-70)
+        self.ballState_logo.setSize(ratioX * 80,ratioY * 80)
+
+        #Updates Play Label
+        self.playLabel.oldPosition = (ratioX * 320,(ratioY * 550) - 170)
+
+
+        #Updates Credits Label
+        self.creditsLabel.center = (270,(ratioY * 470)-70)
+        
+
+        #Updates Selection Border
+        self.selectBorder.setSize(ratioX * 120,ratioY * 120)
+
+
+
     #Resets everything on the screen
     def reset(self,num = 0):
         """
@@ -134,7 +179,7 @@ class StartScreen(simpleGE.Scene):
         
         if num == 0:
             pygame.mixer.music.play(-1)
-
+            
     
     #Checks for Key Down
     def processEvent(self, event):
@@ -317,21 +362,22 @@ class StartScreen(simpleGE.Scene):
         Takes in a directory that we want to change to 
         and the file that we want to run. If you pass 
         None into the game directory it will not change
-        the directory. 
+        the directory. Will also take you out of full screen
+        before you run the subprocess.
         """
 
         if gameDir != None:
-
             os.chdir(gameDir)
             subprocess.call(["python3",gameFile])
             os.chdir(self.startDir)
-        
+            
         else:
             subprocess.call(["python3",gameFile])
 
         #If it is not the credits scene reset
         if gameFile != "credits.py":
             self.reset()
+            self.start()
 
 
 #Creates the screen
@@ -386,7 +432,8 @@ def loadPage(games,pages=[None]):
     if initialLength > 4:
         page.numberOfGamesY += 1
     
-    #Adds to the pagesList
+    #Adds to the pagesList and rezises
+    page.resize()
     pages.append(page)
 
 
