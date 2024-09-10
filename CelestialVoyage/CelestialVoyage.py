@@ -44,8 +44,7 @@ class Ship(simpleGE.Sprite):
         self.setSize(70, 70)
         self.position = (320, 240)
         self.hitPoints = 10
-        self.imageAngle = 90
-        self.setBoundAction(self.STOP)
+        self.setBoundAction(self.WRAP)
         
     def process(self):
         if self.isKeyPressed(pygame.K_a):
@@ -204,7 +203,7 @@ class Game(simpleGE.Scene):
     def __init__(self):
         super().__init__()
         self.setCaption("Survive within the confines of Ouroboros")
-        self.background.fill((18, 22, 41))
+        #self.background.fill((18, 22, 41))
         self.setImage("eventHorizon.png")
         
         self.ship = Ship(self)
@@ -261,6 +260,56 @@ class Game(simpleGE.Scene):
         
         self.sprites = [self.ship, self.bullets, self.meteors, self.comets, self.timeBox, self.gameScore, self.lblTime, self.healthBox, self.lblHealth, self.lblScore]
     
+    def resize(self):
+        """
+        Defualt window size is 640 by 480. This function 
+        makes a ratio based off that size and updates 
+        everything on the screen to be rezised with whatever
+        the current size of the full screen is. 
+        """
+
+        windowSize = pygame.display.get_window_size()
+
+        #Used for scailing
+        ratioX = windowSize[0] / 640
+        ratioY = windowSize[1] / 480
+
+        #Updates spaceship size 
+        self.ship.setSize(ratioX * 70,ratioY * 70)
+        self.ship.position = (ratioX * self.ship.x,ratioY * self.ship.y)
+    
+        #Updates meteors
+        for meteor in self.meteors:
+            meteor.setSize(ratioX * 50,ratioY * 50)
+        
+        #Updates comets
+        for comet in self.comets:
+            comet.setSize(ratioX * 50,ratioY * 50)
+        
+        #Updates bullets
+        for bullet in self.bullets:
+            bullet.colorRect("white",(ratioX * 5,ratioY * 5))
+        
+        #Updates the game score
+        self.gameScore.position = (ratioX * 100,ratioY * 30)
+
+        #Updates the time box
+        self.timeBox.position = (ratioX * 540,ratioY * 30)
+
+        #Updates the label score
+        self.lblScore.center = (ratioX * 100,ratioY * 30)
+
+        #Updates label ti,e
+        self.lblTime.center = (ratioX * 540,ratioY * 30)
+
+        #Updates label health
+        self.lblHealth.center = (ratioX * 320,ratioY * 30)
+
+        #Updates health box
+        self.healthBox.position = (ratioX * 320,ratioY * 30)
+        
+        
+
     def process(self):
         for meteor in self.meteors:
             if self.ship.collidesWith(meteor):
@@ -350,6 +399,33 @@ class Instructions(simpleGE.Scene):
         self.btnQuit.text = "Quit (down)"
         
         self.sprites = [self.scoreBox, self.cage, self.playBG, self.quitBG, self.lblScore, self.Instructions, self.btnPlay, self.btnQuit]
+
+    def resize(self):
+            """
+            Defualt window size is 640 by 480. This function 
+            makes a ratio based off that size and updates 
+            everything on the screen to be rezised with whatever
+            the current size of the full screen is. 
+            """
+
+            windowSize = pygame.display.get_window_size()
+
+            #Used for scailing
+            ratioX = windowSize[0] / 640
+            ratioY = windowSize[1] / 480
+
+            #Repositions buttons/labels
+            self.btnPlay.center = (ratioX * 100, ratioY * 450)
+            self.btnQuit.center = (ratioX * 540,ratioY * 450)
+            self.lblScore.center = (ratioX * 320,ratioY * 50)
+            self.Instructions.center = (ratioX * 320,ratioY * 240)
+
+            #Updates all the cages around them
+            self.cage.position = (ratioX * self.cage.x,ratioY * self.cage.y)
+            self.playBG.position = (ratioX * self.playBG.x,ratioY * self.playBG.y)
+            self.quitBG.position = (ratioX * self.quitBG.x,ratioY * self.quitBG.y)
+            self.scoreBox.position = (ratioX * self.scoreBox.x,ratioY * self.scoreBox.y)
+            
         
         
     def process(self):
@@ -379,10 +455,12 @@ def main():
     score = 0
     while keepGoing:
         instructions = Instructions(score)
+        instructions.resize()
         instructions.start()
     
         if instructions.status == "play":
             game = Game()
+            game.resize()
             game.start()
             score = game.score
         else:

@@ -111,6 +111,37 @@ class Game(simpleGE.Scene):
                         self.darkmatter,
                         self.lblScore,
                         self.bullet]
+    
+    def resize(self):
+        """
+        Defualt window size is 640 by 480. This function 
+        makes a ratio based off that size and updates 
+        everything on the screen to be rezised with whatever
+        the current size of the full screen is. 
+        """
+
+        windowSize = pygame.display.get_window_size()
+
+        #Used for scailing
+        ratioX = windowSize[0] / 640
+        ratioY = windowSize[1] / 480
+
+        #Updates the spaceship size and position
+        self.spaceship.setSize(ratioX * 30,ratioY * 30)
+        self.spaceship.position = (ratioX * self.spaceship.x,ratioY * self.spaceship.y)
+
+        #Updates bullet
+        self.bullet.colorRect("white",(ratioX * 5,ratioY * 5))
+
+        #Updates the asteriods
+        for asteriod in self.asteroids:
+            asteriod.setSize(ratioX * 35,ratioY * 35)
+
+        #Updates the dark matter
+        self.darkmatter.setSize(ratioX * 35,ratioY * 35)
+            
+
+
         
     def processEvent(self, event):
         if event.type == pygame.KEYDOWN:
@@ -174,6 +205,30 @@ class Instructions(simpleGE.Scene):
                         self.btnQuit,
                         self.lblScore]
     
+    def resize(self):
+        """
+        Defualt window size is 640 by 480. This function 
+        makes a ratio based off that size and updates 
+        everything on the screen to be rezised with whatever
+        the current size of the full screen is. 
+        """
+
+        windowSize = pygame.display.get_window_size()
+
+        #Used for scailing
+        ratioX = windowSize[0] / 640
+        ratioY = windowSize[1] / 480
+
+        #Score label
+        self.lblScore.center = (ratioX * 320,ratioY * 425)
+
+        #Buttons
+        self.btnQuit.center = (ratioX * 535,ratioY * 425)
+        self.btnPlay.center = (ratioX * 100,ratioY * 425)
+
+        #Directions
+        self.directions.center = (ratioX * 320,ratioY * 240)
+    
     def process(self):
         if self.btnPlay.clicked:
             self.response = "Play"
@@ -202,10 +257,12 @@ def main():
     lastScore = 0 
     while keepGoing:
         instructions = Instructions(lastScore)
+        instructions.resize()
         instructions.start()
         
         if instructions.response == "Play":
             game = Game()
+            game.resize()
             game.start()
             lastScore = game.score
             
